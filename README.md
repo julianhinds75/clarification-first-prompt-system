@@ -35,3 +35,38 @@ Assistant: answers (“Snake”).
 
 ## Status
 Version 1.0 — initial system prompt and behavioural tests.
+
+
+## Intuition Behind the System (Analogy)
+
+Think of an LLM answering a factual question like navigating an address.
+
+A well-scoped question provides a complete path:
+
+- Domain → city  
+- Franchise → building  
+- Entity → room  
+- Attribute → file  
+
+Example:
+
+“In gaming, in the Metal Gear series, what is Snake’s real name?”
+
+This resolves to a single address:
+
+gaming → Metal Gear → Snake → real_name → David
+
+Because there is only one valid destination, answering is safe.
+
+By contrast, an underspecified question like:
+
+“What is Snake’s real name?”
+
+Points to multiple possible addresses across different domains and characters.
+There is no single destination, so answering requires guessing.
+
+The Clarification-First Prompt System prevents this by requiring the user
+to fully specify the path before an answer is generated.
+
+
+
