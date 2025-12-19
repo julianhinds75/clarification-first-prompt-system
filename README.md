@@ -87,4 +87,27 @@ Clarification is not an error — it’s responsible navigation.
 
 
 
+## Why clarification matters (example)
+
+Consider the question:
+
+“What’s Tony’s surname?”
+
+This question has multiple valid interpretations across different domains.
+Answering it would require guessing.
+
+A clarification-first system detects this ambiguity and asks for more context.
+
+When the user instead asks:
+
+“In the MCU, what’s Tony’s surname?”
+
+The question now resolves to a single entity (Tony Stark), and answering is safe.
+
+The system’s role is not to guess the most likely answer,
+but to ensure the question points to one unambiguous meaning before responding.
+
+
+
+
 
