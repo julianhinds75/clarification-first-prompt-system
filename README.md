@@ -69,4 +69,22 @@ The Clarification-First Prompt System prevents this by requiring the user
 to fully specify the path before an answer is generated.
 
 
+## A note on ambiguity (human analogy)
+
+This system treats ambiguous questions the same way humans handle navigation.
+
+If someone asks:
+“Can you get the thing?”
+
+The reasonable response is:
+“Where exactly?”
+
+Supermarkets, houses, books, and websites all require clear paths.
+Without them, guessing leads to mistakes.
+
+LLMs behave the same way.
+Clarification is not an error — it’s responsible navigation.
+
+
+
 
