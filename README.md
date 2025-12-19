@@ -109,5 +109,15 @@ but to ensure the question points to one unambiguous meaning before responding.
 
 
 
+### Scope of this system
+
+The Clarification-First Prompt System applies only to questions
+that expect a single, correct answer.
+
+It does not apply to exploratory, philosophical, or opinion-based
+questions where multiple perspectives are valid by design.
+
+
+
 
 
