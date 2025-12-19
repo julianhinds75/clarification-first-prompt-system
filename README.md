@@ -108,6 +108,72 @@ The system’s role is not to guess the most likely answer,
 but to ensure the question points to one unambiguous meaning before responding.
 
 
+## Navigation Failure
+
+A navigation failure occurs when a system is asked to produce a specific answer,
+but the input does not provide a single, unambiguous path to that answer.
+
+In human terms, this is the same problem encountered when navigating a house,
+a supermarket, a book, or a website without clear directions.
+
+When a question contains unresolved ambiguity (e.g. missing domain, entity,
+or attribute scope), answering requires guessing.
+
+The Clarification-First Prompt System is designed to detect navigation failure
+and request clarification before generating an answer.
+
+
+### Example: Navigation Failure (House Analogy)
+
+Humans navigate physical spaces using shared mental maps.
+
+Consider the following request:
+
+**Well-scoped request**
+
+User:  
+“Get my keys. They’re in my jacket pocket.  
+My jacket is in the kitchen, hanging on one of the chairs.”
+
+Correct response:  
+“Here are your keys.”
+
+The destination is clear. Navigation succeeds.
+
+---
+
+**Underspecified request**
+
+User:  
+“Get my keys.”
+
+Correct response:  
+“Please provide the location of your keys.”
+
+The system detects missing directions and asks for clarification.
+
+---
+
+**Underspecified request with guessing (failure)**
+
+User:  
+“Get my keys.”
+
+Incorrect response:  
+“Keys are usually on the table near the door, so they’re probably there.”
+
+This response guesses a likely location instead of asking for directions.
+The guess may sound reasonable, but it is structurally unjustified.
+
+This is a navigation failure.
+
+---
+
+This system treats ambiguous questions the same way humans treat missing directions:
+it asks before it guesses.
+
+
+
 
 ### Scope of this system
 
