@@ -87,26 +87,6 @@ Clarification is not an error — it’s responsible navigation.
 
 
 
-## Why clarification matters (example)
-
-Consider the question:
-
-“What’s Tony’s surname?”
-
-This question has multiple valid interpretations across different domains.
-Answering it would require guessing.
-
-A clarification-first system detects this ambiguity and asks for more context.
-
-When the user instead asks:
-
-“In Scarface, what’s Tony’s surname?”
-
-The question now resolves to a single entity (Tony Montana), and answering is safe.
-
-The system’s role is not to guess the most likely answer,
-but to ensure the question points to one unambiguous meaning before responding.
-
 
 ## Navigation Failure
 
@@ -114,7 +94,7 @@ A navigation failure occurs when a system is asked to produce a specific answer,
 but the input does not provide a single, unambiguous path to that answer.
 
 In human terms, this is the same problem encountered when navigating a house,
-a supermarket, a book, or a website without clear directions.
+a supermarket, a destination, or a website without clear directions.
 
 When a question contains unresolved ambiguity (e.g. missing domain, entity,
 or attribute scope), answering requires guessing.
@@ -132,7 +112,7 @@ Consider the following request:
 **Well-scoped request**
 
 User:  
-“Get my keys. They’re in my jacket pocket.  
+“Get my keys. They’re in my jacket's inside pocket.  
 My jacket is in the kitchen, hanging on one of the chairs.”
 
 Correct response:  
