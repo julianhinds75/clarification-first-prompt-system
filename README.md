@@ -50,7 +50,7 @@ A well-scoped question provides a complete path:
 
 Example:
 
-“In film, in the film titled "Scarface", what is Montna’s first name?”
+“In film, in the film titled "Scarface", what is Montana’s first name?”
 
 This resolves to a single address:
 
