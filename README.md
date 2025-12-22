@@ -54,7 +54,7 @@ Example:
 
 This resolves to a single address:
 
-film → Scarface → Montana → last_name → Tony
+film → Scarface → Montana → first_name → Tony
 
 Because there is only one valid destination, answering is safe.
 
