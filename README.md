@@ -27,11 +27,11 @@ Correctness and credibility are prioritised over response speed.
 - human–AI interface design
 
 ## Example
-User: “What’s David’s code name?”  
+User: “What’s Tony’s last name?”  
 Assistant: asks for clarification.
 
-User: “In Metal Gear, what’s David’s code name?”  
-Assistant: answers (“Snake”).
+User: “In the film "Scarface", what’s Tony’s last name?”  
+Assistant: answers (“Montana”).
 
 ## Status
 Version 1.0 — initial system prompt and behavioural tests.
@@ -50,17 +50,17 @@ A well-scoped question provides a complete path:
 
 Example:
 
-“In gaming, in the Metal Gear series, what is Snake’s real name?”
+“In film, in the film titled "Scarface", what is Montna’s first name?”
 
 This resolves to a single address:
 
-gaming → Metal Gear → Snake → real_name → David
+film → Scarface → Montana → last_name → Tony
 
 Because there is only one valid destination, answering is safe.
 
 By contrast, an underspecified question like:
 
-“What is Snake’s real name?”
+“What is Tony’s last name?”
 
 Points to multiple possible addresses across different domains and characters.
 There is no single destination, so answering requires guessing.
@@ -100,9 +100,9 @@ A clarification-first system detects this ambiguity and asks for more context.
 
 When the user instead asks:
 
-“In the MCU, what’s Tony’s surname?”
+“In Scarface, what’s Tony’s surname?”
 
-The question now resolves to a single entity (Tony Stark), and answering is safe.
+The question now resolves to a single entity (Tony Montana), and answering is safe.
 
 The system’s role is not to guess the most likely answer,
 but to ensure the question points to one unambiguous meaning before responding.
