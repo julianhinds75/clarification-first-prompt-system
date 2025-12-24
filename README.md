@@ -167,7 +167,7 @@ questions where multiple perspectives are valid by design.
 
 ### CFPS Decision Table (A / B / C)
 
-The Clarification-First Prompt System (CFPS) is a simple guardrail designed to prevent confidently incorrect answers in language models.
+The Clarification-First Prompt System (CFPS) is a simple guardrail designed to prevent confidently incorrect responses..
 
 Before answering a question, CFPS classifies it into one of three categories:
 
@@ -182,7 +182,7 @@ A correct answer may exist, but essential information is missing. Clarification 
 
 CFPS uses the following decision questions:
 
-Is the user expecting a single correct answer, or exploration?
+Is the user expecting a single correct answer, or exploration by design?
 
 Does a single correct answer exist in principle?
 
