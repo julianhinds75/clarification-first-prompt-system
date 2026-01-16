@@ -122,3 +122,7 @@ epistemically unjustified conclusions.
 
 This suggests that evaluation limited to final outputs may miss important
 failure modes introduced earlier in the pipeline.
+
+Note: This behaviour is distinct from hallucination.
+Rather than fabricating new facts, the model prematurely resolves ambiguity during
+compression, leading to confident reasoning over an oversimplified representation.
