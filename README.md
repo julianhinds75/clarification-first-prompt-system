@@ -12,6 +12,7 @@ It decides **how an LLM should respond** before any content is produced.
 
 ---
 
+
 ## What CFPS Does
 
 Given a user prompt, CFPS classifies it into one of four response modes:
