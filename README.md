@@ -1,6 +1,6 @@
 # CFPS — Clarification-First Prompt System
 
-CFPS is a ** **credibility-first decision gate** for language models.
+CFPS is a **credibility-first decision gate** for language models.
 
 It separates:
 - **can answer** from **should answer**
