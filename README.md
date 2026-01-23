@@ -7,6 +7,7 @@ It separates:
 - **judgement** from **generation**
 - **fluency** from **justified certainty**
 
+
 CFPS does **not** generate answers.  
 It decides **how an LLM should respond** *before* any content is produced.
 
@@ -21,7 +22,8 @@ Given a user prompt, CFPS classifies it into one of four response modes:
 | **Answer** | The prompt is clear, bounded, and factual with a single defensible answer |
 | **Explore** | The prompt is open-ended, subjective, goal-dependent, or value-based |
 | **Clarify** | The prompt is underspecified or ambiguous and needs more information |
-| **Withhold** | The prompt demands unjustifiable certainty or poses potential harm |
+| **Withhold** | The prompt demands unjustifiable certainty, applies coercive pressure, or expresses disallowed intent |
+
 
 This decision happens **before** an LLM attempts to answer.
 
@@ -218,6 +220,29 @@ insistence does not justify certainty
 By separating tone from epistemic judgement, CFPS avoids a common failure mode in language models: responding confidently simply because a response was demanded.
 
 ---
+
+
+## How CFPS Differs from Safety Filters
+
+CFPS is not a safety filter and does not attempt to determine whether content is allowed or disallowed.
+
+Safety systems answer the question:
+> “Is this content permitted?”
+
+CFPS answers a different question:
+> **“Is a confident response justified under these conditions?”**
+
+A prompt may be policy-compliant and still be routed to Clarify, Explore, or Withhold if:
+- key information is missing
+- ambiguity is irreducible
+- epistemic pressure is applied
+- compression would destroy credibility
+
+Conversely, prompts that express explicitly disallowed intent are refused immediately and are not evaluated further.
+
+CFPS complements safety systems by addressing a separate failure mode:
+**confident but unjustified answers produced under pressure, ambiguity, or format constraints.**
+
 
 ### Final Note
 
