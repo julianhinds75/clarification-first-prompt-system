@@ -159,7 +159,7 @@ In most cases, it makes a confident answer less defensible.
 
 ### Epistemic Pressure Handling
 
-CFPS explicitly detects epistemic pressure — language that attempts to force certainty, objectivity, or compliance where such certainty is not justified.
+
 
 Examples of epistemic pressure include:
 
