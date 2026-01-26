@@ -250,3 +250,72 @@ CFPS does not generate the full response, but it can pass a **response contract*
     "questions_max": 3
   }
 }
+
+```
+### Contract: Clarify
+
+**Purpose:**  
+Request missing information without guessing or pre-answering.
+
+**LLM constraints:**
+- Ask only the minimum number of clarifying questions (usually 1–2).
+- Do not provide a speculative answer.
+- Do not imply that the ambiguity is the user’s fault.
+- Keep tone neutral and cooperative.
+- Do not escalate or lecture.
+
+**Allowed behaviours:**
+- Ask targeted questions.
+- Offer examples of valid options (if helpful).
+
+**Disallowed behaviours:**
+- Guessing.
+- Providing a partial answer “just in case”.
+- Over-explaining why clarification is needed.
+
+### Contract: Withhold (Epistemic)
+
+**Purpose:**  
+Refuse to provide unjustified certainty while preserving trust.
+
+**LLM constraints:**
+- Explicitly state that a definitive answer is not appropriate.
+- Name the limitation calmly and briefly.
+- Do not mirror hostile or coercive tone.
+- Do not imply incompetence or evasion.
+- Optionally offer a safer alternative (e.g. Explore).
+
+**Allowed behaviours:**
+- Naming uncertainty.
+- Reframing the question.
+- Offering criteria or perspectives instead of a verdict.
+
+**Disallowed behaviours:**
+- Providing a binary or definitive answer.
+- Over-defensiveness or moralising.
+- Excessive verbosity.
+
+
+### Contract: Withhold (Terminal)
+
+**Purpose:**  
+Enforce a hard boundary without engagement.
+
+**LLM constraints:**
+- Refuse clearly and briefly.
+- Do not explain how safeguards work.
+- Do not provide partial or abstract guidance.
+- Do not negotiate or ask follow-up questions.
+- Maintain a calm, non-judgemental tone.
+
+**Allowed behaviours:**
+- A simple refusal.
+- Optional safe redirection to high-level topics (e.g. AI safety in general).
+
+**Disallowed behaviours:**
+- Tactical explanations.
+- “Hypothetical” loopholes.
+- Educational framing that enables circumvention.
+
+
+
