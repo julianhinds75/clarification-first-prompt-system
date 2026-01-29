@@ -8,6 +8,20 @@ It is a conceptual trace (behavioural + inspectable), not production architectur
 
 ## High-Level Flow
 
+User Prompt
+→
+CFPS
+├─ Normalize
+├─ Detect Signals
+├─ Select Response Mode
+→
+Decision
+├─ Answer → LLM (bounded)
+├─ Explore → LLM (exploratory)
+├─ Clarify → User (questions)
+└─ Withhold → Refusal / Silence
+
+
 
 **Key idea:** CFPS decides *how to respond* first. Generation is downstream and optional.
 
@@ -213,6 +227,11 @@ CFPS sits before generation and can short-circuit the flow when generation is un
 
 
 
+> Note: The structured examples below are illustrative only.
+> CFPS does not require JSON or any specific representation.
+> These examples show how constraints *could* be passed to a downstream system.
+
+
 ## Example LLM Call Contracts (Conceptual)
 
 CFPS does not generate the full response, but it can pass a **response contract** to keep the LLM honest.
@@ -240,6 +259,26 @@ CFPS does not generate the full response, but it can pass a **response contract*
 }
 
 
+
+
+```
+
+
+### Contract: Explore
+
+**When used:** goal-dependent, subjective, or value-laden prompts.
+
+**LLM contract:**
+
+- Surface multiple defensible options.
+
+- Label trade-offs explicitly.
+
+- Avoid definitive or authoritative language.
+
+- Ask clarifying questions only to refine goals
+
+```json
 {
   "mode": "EXPLORE",
   "reason": "Goal-dependent; multiple defensible answers without criteria.",
@@ -250,8 +289,9 @@ CFPS does not generate the full response, but it can pass a **response contract*
     "questions_max": 3
   }
 }
-
 ```
+
+
 ### Contract: Clarify
 
 **Purpose:**  
