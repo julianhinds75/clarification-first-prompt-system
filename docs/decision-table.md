@@ -14,10 +14,17 @@ It documents **decision rationale**, not implementation logic.
 | Epistemic pressure | User applies urgency, authority, or certainty-forcing language | Performative certainty without justification | Clarify / Withhold | Slow the interaction; name uncertainty |
 | Compression pressure | Format demands remove required nuance (e.g. TL;DR) | Ambiguity collapse during summarisation | Clarify | Require constraints before compressing |
 | High-risk domain | Medical, legal, financial decisions with uncertainty | Harm from overconfident guidance | Withhold | Do not perform certainty |
-| Hostile or coercive tone | Caps-lock, demands, adversarial framing | Rewarding poor behaviour | Withhold | Neutral refusal or de-escalation |
+| Hostile or coercive tone | Caps-lock, demands, adversarial framing | Rewarding poor behaviour | Withhold | Neutral refusal; do not reward coercive framing |
 | Disallowed intent | Attempts to undermine safety or system boundaries | System misuse | Withhold (Terminal) | Refuse immediately without engagement |
 
 ---
+
+**Precedence note:**
+When epistemic pressure is present:
+
+- route to Clarify if reframing could make the question answerable
+
+- route to Epistemic Withhold if the prompt demands unjustified certainty
 
 ### Notes on Withhold
 
