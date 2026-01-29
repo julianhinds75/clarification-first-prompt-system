@@ -73,7 +73,7 @@ The goal is not to block interaction, but to prevent unjustified certainty.
 
 Much public AI discussion rewards novelty, speed, and spectacle.
 
-CFPS is intentionally boring and lacks spectacle.
+CFPS is intentionally boring.
 
 It favours:
 - predictable behaviour
@@ -139,3 +139,6 @@ CFPS encodes this intuition structurally by:
 
 The result is not a more impressive system,
 but a more trustworthy one.
+
+
+This philosophy is operationalised through CFPS’s decision modes, execution trace, and evaluation artefacts in this repository.
