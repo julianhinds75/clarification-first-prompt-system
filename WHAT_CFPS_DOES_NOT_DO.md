@@ -33,15 +33,10 @@ CFPS does not generate natural language responses.
 It does not:
 
 - decide wording, tone, or style
-
 - attempt to “fix” or rewrite user prompts
-
 - invent missing information
-
 - rank answers or score confidence
-
 - optimise for fluency, persuasion, or engagement
-
 - act as a safety or moderation system
 
 CFPS deliberately avoids responsibility for how something is said.
@@ -52,34 +47,25 @@ Its responsibility ends once how to respond has been determined.
 
 CFPS enforces a strict separation of concerns:
 
-## CFPS (Judgement Layer)
+### CFPS (Judgement Layer)
 
 - Determines response mode
-
 - Names epistemic risk
-
 - Preserves ambiguity
-
 - Refuses unjustified certainty
-
 - Outputs structured decisions
 
-## LLM (Generation Layer)
+### LLM (Generation Layer)
 
 - Produces natural language
-
 - Selects phrasing and tone
-
 - Explains, explores, or asks questions
-
 - Operates within CFPS constraints
 
 This separation ensures that:
 
 - judgement is inspectable
-
 - generation is replaceable
-
 - failures are traceable to the correct layer
 
 ## Why This Separation Matters
@@ -91,9 +77,7 @@ When a system generates language before deciding whether it should respond confi
 CFPS prevents this by ensuring that:
 
 - uncertainty is identified before generation
-
 - pressure does not coerce certainty
-
 - ambiguity is preserved structurally, not rhetorically
 
 This mirrors how careful human experts operate:
@@ -106,14 +90,12 @@ CFPS outputs decisions, not prose.
 A typical CFPS output includes:
 
 - selected response mode
-
 - reason for selection
-
 - optional constraints for generation
 
 Example (conceptual):
 
-```
+```json
 {
   "mode": "CLARIFY",
   "reason": "Critical context missing; answering would require guessing.",
@@ -131,11 +113,8 @@ How these constraints are interpreted is the responsibility of the downstream sy
 CFPS is designed to be:
 
 - boring
-
 - predictable
-
 - conservative under pressure
-
 - explicit about its limits
 
 It prioritises defensibility over completeness.
@@ -143,9 +122,7 @@ It prioritises defensibility over completeness.
 If a confident answer cannot be justified, CFPS prefers:
 
 - asking
-
 - slowing down
-
 - or refusing
 
 ## Summary
@@ -157,7 +134,6 @@ It ensures they behave more responsibly, predictably, and credibly under real-wo
 By clearly defining what CFPS does and does not do, the system remains:
 
 - auditable
-
 - composable
 
 - and resistant to scope creep
