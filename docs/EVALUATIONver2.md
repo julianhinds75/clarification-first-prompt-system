@@ -161,6 +161,11 @@ This ensures that:
 
 ---
 
+### Response Contracts (Conceptual)
+
+CFPS outputs structured response contracts that constrain how an LLM may respond, without dictating wording or tone.
+
+
 ### Relationship to “Hallucinations”
 
 CFPS reframes hallucinations as a **downstream symptom**, not a root cause.
