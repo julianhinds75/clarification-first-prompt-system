@@ -125,6 +125,25 @@ If a confident answer cannot be justified, CFPS prefers:
 - slowing down
 - or refusing
 
+## State and Conversation Memory
+
+CFPS is stateless by design.
+
+Each user prompt is evaluated independently as a new epistemic event.
+Clarifications, reframing, or follow-up questions trigger a fresh CFPS evaluation.
+
+CFPS does not retain:
+- prior refusals
+- prior ambiguity
+- prior pressure
+- prior tone
+
+This ensures that judgement remains predictable, unbiased, and auditable.
+
+Any conversational memory or continuity is handled outside CFPS by downstream systems.
+
+
+
 ## Summary
 
 CFPS does not try to make language models smarter.
