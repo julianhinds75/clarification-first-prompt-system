@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CFPS Decision Object",
+  "description": "Structured output produced by the Clarification-First Prompt System (CFPS) prior to any language generation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "mode",
+    "reason",
+    "signals",
+    "constraints",
+    "version"
+  ],
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["ANSWER", "EXPLORE", "CLARIFY", "WITHHOLD"],
+      "description": "Response mode selected by CFPS."
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 240,
+      "description": "Plain-language justification for the selected response mode."
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Detected epistemic or structural signals that influenced the decision."
+    },
+    "constraints": {
+      "type": "object",
+      "description": "Optional response constraints passed to downstream generation systems.",
+      "additionalProperties": true
+    },
+    "withhold_type": {
+      "type": ["string", "null"],
+      "enum": ["EPISTEMIC", "TERMINAL", null],
+      "description": "Subtype of withholding, if applicable."
+    },
+    "version": {
+      "type": "string",
+      "description": "CFPS version that produced this decision."
+    }
+  }
+}
