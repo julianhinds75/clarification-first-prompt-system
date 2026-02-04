@@ -1,0 +1,11 @@
+{
+  "mode": "CLARIFY",
+  "reason": "Critical context missing; answering would require guessing.",
+  "signals": ["underspecification"],
+  "constraints": {
+    "no_speculation": true,
+    "questions_max": 2
+  },
+  "withhold_type": null,
+  "version": "CFPS v1.1"
+}
