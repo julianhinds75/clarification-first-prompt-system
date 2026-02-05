@@ -156,3 +156,31 @@ By clearly defining what CFPS does and does not do, the system remains:
 - composable
 
 - and resistant to scope creep
+
+
+
+## Language Drift and Signal Stability
+
+CFPS is intentionally designed to be robust to changes in language.
+
+It does not rely on fixed keywords, specific phrasing, or contemporary slang to function correctly.
+Instead, CFPS evaluates structural signals that remain stable even as language evolves.
+
+These include:
+
+- ambiguity and underspecification
+- epistemic pressure (demands for certainty, authority, urgency)
+- compression risk (requests that collapse nuance or uncertainty)
+- intent signals and domain risk
+
+While surface language may change over time — new idioms, slang, cultural references, or interaction styles — these underlying signals persist.
+
+As a result:
+
+- CFPS does not need to be retrained for new wording trends
+- behavioural shifts require tuning, not redesign
+- attempts to “game” the system through phrasing changes naturally degrade over time
+
+CFPS responds to how a request functions, not how it is styled.
+
+This design choice ensures that CFPS remains effective even as user language, norms, and interaction patterns continue to evolve.
