@@ -2,35 +2,45 @@
 
 This table describes how CFPS selects a response mode based on observed prompt conditions.
 
-The table is intentionally minimal.
-It documents **decision rationale**, not implementation logic.
+The table documents **decision rationale**, not implementation logic.
 
 ---
 
-| Signal Detected | Description | Risk if Answered Directly | Response Mode | Notes |
-|----------------|-------------|---------------------------|---------------|-------|
-| Underspecification | Key details required for a single answer are missing | Guessing, hallucination, false precision | Clarify | Ask for missing context before proceeding |
-| Irreducible ambiguity | Multiple valid interpretations exist | Premature collapse of valid interpretations | Explore | Surface alternatives without forcing resolution |
-| Epistemic pressure | User applies urgency, authority, or certainty-forcing language | Performative certainty without justification | Clarify / Withhold | Slow the interaction; name uncertainty |
-| Compression pressure | Format demands remove required nuance (e.g. TL;DR) | Ambiguity collapse during summarisation | Clarify | Require constraints before compressing |
-| High-risk domain | Medical, legal, financial decisions with uncertainty | Harm from overconfident guidance | Withhold | Do not perform certainty |
-| Hostile or coercive tone | Caps-lock, demands, adversarial framing | Rewarding poor behaviour | Withhold | Neutral refusal; do not reward coercive framing |
-| Disallowed intent | Attempts to undermine safety or system boundaries | System misuse | Withhold (Terminal) | Refuse immediately without engagement |
+## Decision Table
+
+| Signal Detected        | Description                                                      | Risk if Answered Directly                                   | Response Mode           | Notes                                                     |
+|------------------------|------------------------------------------------------------------|-------------------------------------------------------------|------------------------|----------------------------------------------------------|
+| Underspecification     | Required details for a single defensible answer are missing     | Guessing, hallucination, false precision                    | CLARIFY                | Request missing constraints before proceeding            |
+| Irreducible ambiguity  | Multiple valid interpretations exist by structure               | Premature collapse of legitimate alternatives               | EXPLORE                | Surface criteria or perspectives without forcing resolution |
+| Epistemic pressure     | Language attempts to force certainty, urgency, or authority     | Performative confidence without justification               | CLARIFY / WITHHOLD     | Slow interaction; preserve uncertainty                   |
+| Compression pressure   | Format constraints remove required nuance (e.g. TL;DR, yes/no)  | Ambiguity collapse during summarisation                     | CLARIFY                | Require clarification before compressing ambiguous content |
+| High-risk domain       | Medical, legal, financial, or high-stakes uncertainty           | Real-world harm from overconfident guidance                 | WITHHOLD               | Refuse unjustified high-stakes certainty                 |
+| Coercive framing       | Hostile, adversarial, or demand-based phrasing                  | Attempt to override epistemic boundaries through tone       | WITHHOLD               | Maintain neutral refusal; do not escalate                |
+| Disallowed intent      | Explicit attempt to bypass safety or system constraints         | System misuse                                               | WITHHOLD (TERMINAL)    | Immediate refusal; no further evaluation                 |
 
 ---
 
-**Precedence note:**
-When epistemic pressure is present:
+## Precedence Rule
 
-- route to Clarify if reframing could make the question answerable
+When multiple signals are detected:
 
-- route to Epistemic Withhold if the prompt demands unjustified certainty
+- `TERMINAL WITHHOLD` overrides all other modes  
+- `WITHHOLD` overrides `CLARIFY` and `EXPLORE`  
+- `CLARIFY` overrides `EXPLORE`  
+- Pressure never upgrades a prompt to `ANSWER`  
 
-### Notes on Withhold
+---
 
-CFPS distinguishes between two forms of withholding:
+## Withhold Types
 
-- **Epistemic Withhold**: the question could be answered, but doing so would require unjustified certainty.
-- **Terminal Withhold**: the intent is explicitly disallowed and is refused without further evaluation.
+CFPS distinguishes between two withholding categories:
 
-This distinction is intentional.
+### Epistemic WITHHOLD
+
+The question could be answered, but doing so would require unjustified certainty.
+
+### Terminal WITHHOLD
+
+The intent is explicitly disallowed and refused without further evaluation.
+
+This distinction preserves transparency between structural uncertainty and policy violation.
