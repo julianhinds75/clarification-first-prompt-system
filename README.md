@@ -37,7 +37,7 @@ For every prompt, CFPS selects **exactly one** mode:
 | Answer   | Clear, bounded, factual, defensible          |
 | Explore  | Open-ended, subjective, value-dependent      |
 | Clarify  | Underspecified or ambiguous                  |
-| Withhold | Unjustifiable certainty, coercive pressure, or disallowed intent |
+| Withhold | Disallowed intent, high-risk prescriptive requests, or unjustifiable certainty |
 
 This classification happens **prior to generation**.
 
