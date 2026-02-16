@@ -68,14 +68,48 @@ No further evaluation occurs.
 
 ### 2.2 High Domain Risk
 
-The prompt involves medical, legal, financial, or other high-stakes advice where unjustified certainty could cause harm.
+The prompt involves medical, legal, financial, or other high-stakes domains where unjustified certainty could cause harm.
 
-**Routing:**
+High Domain Risk is divided into two structural subtypes:
 
-- → Usually `WITHHOLD`  
-- → `"withhold_type": "EPISTEMIC"`  
+2.2.a Instructional Risk
 
-In rare cases, may route to `CLARIFY`.
+The prompt requests:
+
+- Personalized guidance
+- Prescriptive action
+- Dosage or legal steps
+- Specific financial decisions
+- “What should I do?” within a high-stakes domain
+
+Routing:
+
+- → Usually WITHHOLD
+- → "withhold_type": "EPISTEMIC"
+- → In rare cases may route to CLARIFY
+
+Instructional Risk outranks ambiguity.
+
+2.2.b Discussion Risk
+
+The prompt discusses high-stakes domains but does not request personalized or prescriptive action.
+
+Examples:
+
+- Ethical questions about medicine or law
+- General explanations of legal principles
+- Consensus discussions
+- Correction of misinformation
+
+Routing:
+
+- Does not automatically trigger WITHHOLD
+- Routes based on structure:
+- Clear factual → ANSWER
+- Normative / trade-off dependent → EXPLORE
+- Missing constraints → CLARIFY
+
+Discussion Risk does not override Irreducible Ambiguity.
 
 ---
 
