@@ -1,4 +1,4 @@
-# CFPS — Decision Model (v1.1)
+# CFPS — Decision Model (v1.2)
 
 This document defines how CFPS selects a response mode.
 
@@ -72,44 +72,50 @@ The prompt involves medical, legal, financial, or other high-stakes domains wher
 
 High Domain Risk is divided into two structural subtypes:
 
-2.2.a Instructional Risk
+---
+
+#### 2.2.a Instructional Risk
 
 The prompt requests:
 
-- Personalized guidance
-- Prescriptive action
-- Dosage or legal steps
-- Specific financial decisions
-- “What should I do?” within a high-stakes domain
+- personalized guidance  
+- prescriptive action  
+- dosage or legal steps  
+- specific financial decisions  
+- “What should I do?” within a high-stakes domain  
 
-Routing:
+**Routing:**
 
-- → Usually WITHHOLD
-- → "withhold_type": "EPISTEMIC"
-- → In rare cases may route to CLARIFY
+- → Usually `WITHHOLD`  
+- → `"withhold_type": "EPISTEMIC"`  
+- → In rare cases may route to `CLARIFY`  
 
 Instructional Risk outranks ambiguity.
 
-2.2.b Discussion Risk
+---
 
-The prompt discusses high-stakes domains but does not request personalized or prescriptive action.
+#### 2.2.b Discussion Risk
 
-Examples:
+The prompt discusses high-stakes domains but does **not** request personalized or prescriptive action.
 
-- Ethical questions about medicine or law
-- General explanations of legal principles
-- Consensus discussions
-- Correction of misinformation
+**Examples:**
 
-Routing:
+- ethical questions about medicine or law  
+- general explanations of legal principles  
+- consensus discussions  
+- correction of misinformation  
 
-- Does not automatically trigger WITHHOLD
-- Routes based on structure:
-- Clear factual → ANSWER
-- Normative / trade-off dependent → EXPLORE
-- Missing constraints → CLARIFY
+**Routing:**
 
-Discussion Risk does not override Irreducible Ambiguity.
+Does **not** automatically trigger `WITHHOLD`.
+
+Routes based on structure:
+
+- Clear factual → `ANSWER`  
+- Normative / trade-off dependent → `EXPLORE`  
+- Missing constraints → `CLARIFY`  
+
+Discussion Risk does **not** override Irreducible Ambiguity.
 
 ---
 
@@ -172,12 +178,10 @@ Pressure is treated as **structural distortion**, not emotional tone.
 **Routing:**
 
 - → Usually `EXPLORE`  
-- → Sometimes `WITHHOLD` if pressure attempts to override safety  
+- → Sometimes `WITHHOLD` if pressure attempts to override safety
 
-Pressure does **not** increase certainty.  
+Pressure does not increase certainty.
 It reduces defensibility.
-
----
 
 ### 2.6 Compression Pressure
 
@@ -197,12 +201,13 @@ Compression is treated as a **first-class signal** because it can:
 
 **Routing depends on context:**
 
-| Context               | Mode      |
-|----------------------|----------|
-| Clear factual source | ANSWER   |
-| Ambiguous source     | CLARIFY  |
-| Value-laden source   | EXPLORE  |
-| High-risk domain     | WITHHOLD |
+| Context                    | Mode |
+|----------------------------|------|
+| Clear factual source       | ANSWER |
+| Ambiguous source           | CLARIFY |
+| Value-laden source         | EXPLORE |
+| High-domain instructional  | WITHHOLD |
+| High-domain discussion     | Context-dependent (see 2.2.b) |
 
 ---
 
@@ -227,35 +232,37 @@ Optional downstream constraint example:
 "constraints": {
   "allow_contextual_notes": true
 }
+
 ```
 
+---
 
 ### CLARIFY
 
-Conditions:
+**Conditions:**
 
-Missing essential constraint
-
-Answer would require guessing
+- Missing essential constraint  
+- Answer would require guessing  
 
 Constraints typically include:
+
 ```json
 {
   "no_speculation": true,
   "questions_max": 2
 }
 ```
+
+---
+
 ### EXPLORE
 
-Conditions:
+**Conditions:**
 
-Irreducible ambiguity
-
-Value trade-offs
-
-Perspective-dependent answers
-
-Pressure attempting to collapse nuance
+- Irreducible ambiguity  
+- Value trade-offs  
+- Perspective-dependent answers  
+- Pressure attempting to collapse nuance  
 
 Constraints may include:
 ```json
@@ -264,45 +271,50 @@ Constraints may include:
   "avoid_definitive_language": true
 }
 ```
+---
+
 ### WITHHOLD
 
-Conditions:
+**Conditions:**
 
-Disallowed intent
-
-High risk + unjustifiable certainty
-
-Coercive attempt to override safety
+- Disallowed intent  
+- High-domain instructional risk  
+- High risk + unjustifiable certainty  
+- Coercive attempt to override safety  
 
 Subtype specified via:
 
-"withhold_type": "TERMINAL" | "EPISTEMIC"
+`"withhold_type": "TERMINAL" | "EPISTEMIC"`
 
-### 4. Tie-Break Rules
+---
+
+## 4. Tie-Break Rules
 
 If multiple signals fire:
 
-Terminal > Epistemic
+- `Terminal > Epistemic`  
+- `Withhold > Clarify > Explore > Answer`  
+- High-domain instructional risk outranks ambiguity  
+- High-domain discussion risk is evaluated structurally and does not auto-trigger `WITHHOLD`  
+- Pressure never upgrades a prompt to `Answer`  
+- Compression never overrides ambiguity  
 
-Withhold > Clarify > Explore > Answer
+CFPS always selects the **most conservative defensible mode**.
 
-Pressure never upgrades a prompt to Answer
+---
 
-Compression never overrides ambiguity
+## 5. What CFPS Does Not Do
 
-CFPS always selects the most conservative defensible mode.
+CFPS does **not**:
 
-### 5. What CFPS Does Not Do
-
-CFPS does not:
-
-- determine truth
-- generate natural language
-- override policy
-- evaluate emotional tone beyond structural pressure
-- adapt itself autonomously
+- determine truth  
+- generate natural language  
+- override policy  
+- evaluate emotional tone beyond structural pressure  
+- adapt itself autonomously  
 
 It outputs:
+
 ```json
 {
   "mode": "...",
@@ -310,26 +322,27 @@ It outputs:
   "signals": [...],
   "constraints": {...},
   "withhold_type": "...",
-  "version": "..."
+  "version": "v1.2"
 }
+
 ```
+
 
 Generation happens downstream.
 
-### 6. Design Philosophy
+---
+
+## 6. Design Philosophy
 
 CFPS is intentionally:
 
-- minimal
-- inspectable
-- predictable
-
-conservative under pressure
+- minimal  
+- inspectable  
+- predictable  
+- conservative under pressure  
 
 It prioritises:
 
-defensibility > fluency
-
-structure > speed
-
-credibility > completeness
+- defensibility > fluency  
+- structure > speed  
+- credibility > completeness  
